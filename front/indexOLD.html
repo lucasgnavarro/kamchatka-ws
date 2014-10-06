@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	    	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="/static/bootstrap.css"/>
+	<script>
+		var ws = null;
+	</script>
+
+
+
+</head>
+<body>
+
+
+	<div class="container"><div class="well">Test</div>
+		<div class="row">
+			<button id="subirVolumen" type="button" class="btn btn-lg btn-success">Subir Volumen</button>
+
+			<button id="bajarVolumen" type="button" class="btn btn-lg btn-danger">Bajar Volumen</button>
+		</div>
+
+
+	</div>
+
+		<script>
+
+		$(document).ready(function(){
+			ws = new WebSocket("ws://192.168.1.10:9598/ws")
+		});
+	
+		$('#subirVolumen').click(function(){
+			//alert('sube');
+			var data = {'family' : 'audio', 'action' : 'volumeUp'}
+			ws.send(JSON.stringify(data));
+
+		});
+
+		$('#bajarVolumen').click(function(){
+			//alert('baja');
+			var data = {'family' : 'audio', 'action' : 'volumeDown'}
+			ws.send(JSON.stringify(data));
+		});
+      var options = {};
+		 
+
+	</script>
+</body>
+</html>
