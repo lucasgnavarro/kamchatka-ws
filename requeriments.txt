@@ -1,0 +1,9 @@
+./utils/python-xlib-0.15rc1
+PyUserInput==0.1.9
+Pygments==1.6
+argparse==1.2.1
+backports.ssl-match-hostname==3.4.0.2
+certifi==14.05.14
+simplejson==3.6.3
+tornado==4.0.2
+wsgiref==0.1.2

@@ -60,21 +60,24 @@ $('[data-toggle=collapse]').click(function(){
 			var data = {'family' : 'keyboard', 'action' : 'changeFocus'}
 			ws.send(JSON.stringify(data));
 		});
-
 */
-    var key = ''
-    $('#entry').keyup(function keyUpdHandler(event){
 
-    }).keydown(function( event ) {
+    var key = '';
+    var code;
+    $('#entry').keyup(function keyUpdHandler(e){
+//        code = code = e.keyCode || e.which;
+//        alert(code);
+    }).keydown(function( e ) {
 
-    alert(event.which);
-      if ( event.which == 13 ) {
+      if ( e.which == 13 ) {
         key = 'enterKey';
-        event.preventDefault();
-      }else if ( event.which == 8 ){
+        e.preventDefault();
+      }else if ( e.which == 8 ){
         key = 'backSpace';
-      }else if (event.which == 32 ){
+        e.preventDefault();
+      }else if (e.which == 32 ){
        key = 'spaceKey';
+       e.preventDefault();
       }else{
         var aux = $('#entry');
         var len = aux.val().length;
@@ -94,6 +97,15 @@ $('[data-toggle=collapse]').click(function(){
 
 
 });
+
+
+
+function GetTrueKeyCode(e) {
+        var evtobj = window.event ? event : e;
+        var unicode = evtobj.charCode ? e.charCode : evtobj.keyCode;
+        alert(unicode);
+        alert(e.which);
+}
 
 
 
