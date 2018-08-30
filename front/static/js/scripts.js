@@ -15,11 +15,11 @@ $('[data-toggle=collapse]').click(function(){
         //Esto se podria hacer con un call generico, poner los attr family y action
         //dentro del tag
 
-        ws = new WebSocket("ws://"+host+":"+port+"/ws/"+makeid());
+        ws = new WebSocket("ws://"+host+":"+port+"/remote-control/"+makeid());
 
         $('.ws_trigger').click(function(){
 
-			var data = {'family' : $(this).attr('family'), 'action' : $(this).attr('action')}
+			var data = {'f' : $(this).attr('family'), 'a' : $(this).attr('action')}
 			ws.send(JSON.stringify(data));
         });
 
@@ -71,6 +71,7 @@ $('[data-toggle=collapse]').click(function(){
 
       if ( e.which == 13 ) {
         key = 'enterKey';
+//        this.val('');
         e.preventDefault();
       }else if ( e.which == 8 ){
         key = 'backSpace';
@@ -85,7 +86,7 @@ $('[data-toggle=collapse]').click(function(){
         console.log('pressed '+event.which);
       }
 
-      var data = {'family' : 'key_pressed', 'action' : key}
+      var data = {'f' : 'k', 'a' : 'kp', 'value': key}
       if(key != ''){
         ws.send(JSON.stringify(data));
       }
